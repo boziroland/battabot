@@ -3,6 +3,7 @@ package bot.actualcommands.textcommands;
 import bot.commandmanagement.ICommand;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.internal.entities.emoji.UnicodeEmojiImpl;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class PollCommand implements ICommand {
 
         event.getChannel().sendMessageEmbeds(createEmbed(question.toString()).build()).queue(message -> {
             for (var i = 0; i < answerList.size() && i < numberOfEmojis; i++)
-                message.addReaction((i + 1) + "\u20E3").queue();
+                message.addReaction(new UnicodeEmojiImpl((i + 1) + "\u20E3")).queue();  // todo: idk ez jó-e így???
         });
     }
 

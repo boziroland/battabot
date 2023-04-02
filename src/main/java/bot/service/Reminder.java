@@ -1,6 +1,6 @@
 package bot.service;
 
-import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;

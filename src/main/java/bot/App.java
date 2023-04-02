@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
@@ -14,11 +14,7 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class App extends ListenerAdapter {
 
@@ -57,11 +53,12 @@ public class App extends ListenerAdapter {
 
     private static List<GatewayIntent> getIntents() {
         List<GatewayIntent> ret = new ArrayList<>();
-        ret.add(GatewayIntent.GUILD_EMOJIS);
+        ret.add(GatewayIntent.GUILD_EMOJIS_AND_STICKERS);
         ret.add(GatewayIntent.GUILD_MESSAGES);
         ret.add(GatewayIntent.GUILD_MEMBERS);
         ret.add(GatewayIntent.GUILD_PRESENCES);
         ret.add(GatewayIntent.GUILD_VOICE_STATES);
+        ret.add(GatewayIntent.MESSAGE_CONTENT);
 
         return ret;
     }
