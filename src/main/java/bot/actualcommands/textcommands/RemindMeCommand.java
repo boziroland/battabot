@@ -24,7 +24,7 @@ public class RemindMeCommand implements ICommand {
     private final List<Reminder> reminders = new ArrayList<>();
 
     public RemindMeCommand() {
-        var channels = Constants.getDefaultTextChannels();
+        var channels = Constants.defaultTextChannels;
 
         try {
             Path file = Paths.get(remindersFile);
