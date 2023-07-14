@@ -3,9 +3,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     java
     application
-    kotlin("jvm") version "1.7.21"
+    kotlin("jvm") version "1.9.0"
 
-	id("com.github.johnrengelman.shadow") version "6.0.0"
+	id("com.github.johnrengelman.shadow") version "7.1.0"
 }
 
 group = "org.battabot"
@@ -43,9 +43,9 @@ tasks.test {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = "11"
 }
 
 application {
-    mainClass.set("Bot.App")
+    mainClass.set("AppKt")
 }

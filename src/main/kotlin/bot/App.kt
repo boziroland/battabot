@@ -38,7 +38,7 @@ object App : ListenerAdapter() {
 
     val defaultChannels = jda.guilds.associateWith { guild ->
         guild.textChannels.firstOrNull { channel ->
-            channel.name.lowercase(Locale.getDefault()).contains("general")
+            "general" in channel.name.lowercase(Locale.getDefault())
         } ?: guild.textChannels.first()
     }
 }
