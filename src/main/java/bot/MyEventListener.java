@@ -3,11 +3,10 @@ package bot;
 import bot.commandmanagement.GeneralCommandManager;
 import bot.utils.Constants;
 import bot.utils.Utils;
-import net.dv8tion.jda.api.events.guild.voice.GuildVoiceLeaveEvent;
+import net.dv8tion.jda.api.events.guild.voice.GuildVoiceUpdateEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 
 public class MyEventListener extends ListenerAdapter {
@@ -26,7 +25,7 @@ public class MyEventListener extends ListenerAdapter {
     }
 
     @Override
-    public void onGuildVoiceLeave(@Nonnull GuildVoiceLeaveEvent event) {
+    public void onGuildVoiceUpdate(@NotNull GuildVoiceUpdateEvent event) {
         if (!event.getJDA().getAudioManagers().isEmpty())
             if (event.getJDA().getAudioManagers().get(0).isConnected())
                 if (!Utils.isActualUserLeftInVoiceChannel(event.getChannelLeft()))

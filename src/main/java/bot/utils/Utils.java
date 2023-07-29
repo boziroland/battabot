@@ -4,7 +4,7 @@ import bot.service.Translator;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.VoiceChannel;
+import net.dv8tion.jda.api.entities.channel.unions.AudioChannelUnion;
 import org.apache.commons.lang.StringEscapeUtils;
 
 import javax.annotation.Nullable;
@@ -90,7 +90,7 @@ public class Utils {
         return 69;
     }
 
-    public static Boolean isActualUserLeftInVoiceChannel(VoiceChannel channel) {
+    public static Boolean isActualUserLeftInVoiceChannel(AudioChannelUnion channel) {
         if (channel == null) return false;
         int userCount = 0;
         for (var m : channel.getMembers()) {

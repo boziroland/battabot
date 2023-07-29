@@ -5,17 +5,14 @@ import bot.utils.Utils;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageHistory;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.utils.FileUpload;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.NotImplementedException;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -65,7 +62,7 @@ public class ZipCommand implements ICommand {
             List<Message> retrievedMessages = getMessages(event.getMessage().getReferencedMessage(), messageCode);
             convertMessagesToHTML(retrievedMessages);
             LOGGER.info("Zipped messages with name " + path.substring(7));
-            event.getChannel().sendFile(new File(compressDirectoryToZipFile(path))).queue();
+            event.getChannel().sendFiles(FileUpload.fromData(new File(compressDirectoryToZipFile(path)))).queue();
         }
     }
 
