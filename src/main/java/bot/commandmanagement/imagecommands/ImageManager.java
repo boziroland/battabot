@@ -3,8 +3,9 @@ package bot.commandmanagement.imagecommands;
 import bot.utils.Constants;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.utils.FileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,11 +16,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ImageManager {
 
@@ -116,7 +114,7 @@ public class ImageManager {
 
             try {
                 File f = new File(imageInFolder);
-                channel.sendFile(f).queue();
+                channel.sendFiles(FileUpload.fromData(f)).queue();
             } catch (Exception e) {
                 e.printStackTrace();
                 channel.sendMessage("Internal error, check logs for information").queue();

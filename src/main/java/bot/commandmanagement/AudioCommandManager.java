@@ -1,14 +1,6 @@
 package bot.commandmanagement;
 
-import bot.actualcommands.audiocommands.LocalFileCommand;
-import bot.actualcommands.audiocommands.LoopCommand;
-import bot.actualcommands.audiocommands.PauseCommand;
-import bot.actualcommands.audiocommands.PlayCommand;
-import bot.actualcommands.audiocommands.QueueCommand;
-import bot.actualcommands.audiocommands.ResumeCommand;
-import bot.actualcommands.audiocommands.SkipCommand;
-import bot.actualcommands.audiocommands.StopCommand;
-import bot.actualcommands.audiocommands.VolumeCommand;
+import bot.actualcommands.audiocommands.*;
 import bot.lavaplayer.GuildAudioManager;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
