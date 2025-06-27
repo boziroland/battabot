@@ -82,7 +82,7 @@ public class ImageManager {
 
         File file = new File(finalString);
 
-        attachment.downloadToFile(file);
+        attachment.getProxy().downloadToFile(file);
 
         channel.sendMessage("The image has been uploaded!").queue();
 

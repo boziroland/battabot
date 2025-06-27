@@ -1,7 +1,7 @@
 package bot
 
 import bot.utils.Constants
-import bot.utils.Utils.getPropertiesFromResourceFile
+import bot.utils.UtilsKt
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.Activity
@@ -25,10 +25,10 @@ object App : ListenerAdapter() {
         GatewayIntent.MESSAGE_CONTENT,
     )
 
-    private val token = getPropertiesFromResourceFile(CONFIG_FILE)
-        .getProperty("DiscordToken")
+    private val token = UtilsKt.getPropertiesFromResourceFile(CONFIG_FILE)
+        ?.getProperty("DiscordToken")
         .also {
-            require(it.isNotBlank()) { "Discord bot token is missing!" }
+            require(it!!.isNotBlank()) { "Discord bot token is missing!" }
         }
 
     val jda: JDA = JDABuilder.create(token, intents)

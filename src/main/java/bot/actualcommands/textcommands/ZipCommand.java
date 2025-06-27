@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.entities.MessageHistory;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.utils.FileUpload;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.NotImplementedException;
+import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -166,7 +166,7 @@ public class ZipCommand implements ICommand {
         String imgName = nameToSaveAs + "." + attachment.getFileExtension();
         File img = new File(path + "/images/" + imgName);
         try {
-            attachment.downloadToFile(img).get();
+            attachment.getProxy().downloadToFile(img).get();
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
