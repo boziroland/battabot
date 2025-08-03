@@ -5,6 +5,7 @@ import bot.actualcommands.textcommands.HangmanCommand;
 import bot.actualcommands.textcommands.AmenCommand;
 import bot.actualcommands.textcommands.DictionaryCommand;
 import bot.actualcommands.textcommands.HelpCommand;
+import bot.actualcommands.textcommands.MavCommand;
 import bot.actualcommands.textcommands.PollCommand;
 import bot.actualcommands.textcommands.QuizCommand;
 import bot.actualcommands.textcommands.RandomCommand;
@@ -45,6 +46,7 @@ public class GeneralCommandManager extends CommandManager {
         add(new DictionaryCommand());
         add(new ZipCommand());
         add(new AmenCommand());
+        //add(new MavCommand());
 
         imageManager = new ImageManager();
         audioCommandManager = new AudioCommandManager(guildAudioManager);

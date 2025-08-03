@@ -1,10 +1,13 @@
 package bot.utils;
 
 import bot.service.Translator;
+import com.google.common.base.Splitter;
+import com.google.common.collect.Iterables;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.channel.unions.AudioChannelUnion;
+import net.dv8tion.jda.api.entities.channel.unions.MessageChannelUnion;
 import org.apache.commons.text.StringEscapeUtils;
 
 import javax.annotation.Nullable;
@@ -146,6 +149,17 @@ public class Utils {
         }
 
         return properties;
+    }
+
+    public static void sendMessage(MessageChannelUnion channel, String message) {
+        if (message.length() > 2000) { // Discord character limit per message is 2000
+            var messages = Iterables.toArray(Splitter.fixedLength(2000).split(message), String.class);
+
+            for (var m : messages)
+                channel.sendMessage(m).queue();
+        } else {
+            channel.sendMessage(message).queue();
+        }
     }
 
 }
